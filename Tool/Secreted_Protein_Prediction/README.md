@@ -5,7 +5,7 @@ T9GPred is a computational tool for predicting the proteins secreted via T9SS in
 ## Folder Contents
 - T9GPred_Secretome.py: Contains code for prediction of proteins secreted via T9SS in Bacteroidetes.
 - MODELS: Contains 3 HMM profiles for CTD types generated in this study. 
-- CONFIG.ini: Contains the path for HMM profiles and hmmsearch tool.
+- CONFIG.ini: Contains the path for HMM profiles and HMMsearch tool.
 - run_tools_n_parse.sh: Contains code to run SignalP, Phobius, TMHMM tool.
 - parse_signalp5.py: Contains code to parse the output from SignalP.
 - parse_tmhmm.py: Contains code to parse the output from TMHMM.
