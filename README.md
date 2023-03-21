@@ -11,8 +11,8 @@ This repository provides the developed computational tool T9GPred and the codes 
 ## Software Requirements
 - python3
 	- pandas
-	- numpy
-	- matplotlib
+	- NumPy
+	- Matplotlib
 - R
 	- ggplot2
 	- dplyr
