@@ -5,7 +5,7 @@ This repository provides the developed computational tool T9GPred and the codes 
 (Manuscript)
 
 ## Repository Organization
-- (Tool): This folder contains the information on the computational tool developed in this study
+- [Tool](./Tool): This folder contains the information on the computational tool developed in this study
 - [Figures](./Figures): This folder contains the codes to generate plots in the manuscript
 
 ## Software Requirements
