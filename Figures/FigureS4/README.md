@@ -2,11 +2,11 @@ This folder contains the code to generate Figure S4 in the manuscript.
 
 ## Folder Contents
 
-- Example_T9SS_Gliding_motility_hits.csv: Contains the predicted protein components associated with T9SS and gliding motility for an example Bacteroidetes
-- Example.gff: Contains the genome coordinates of all the coding sequences for the example Bacteroidetes
-- Map_hits_to_gff.py: Contains the code to map proteins to their genome coordinates
-- prepare_xml_for_cgview.py: Contains the code to convert .csv file to .xml format
-- labelsremovedcheck.py: Contains the code which checks for any protein labels being removed by CGView
+- Example_T9SS_Gliding_motility_hits.csv: Contains the predicted protein components associated with T9SS and gliding motility for an example Bacteroidetes.
+- Example.gff: Contains the genome coordinates of all the coding sequences for the example Bacteroidetes.
+- Map_hits_to_gff.py: Contains the code to map proteins to their genome coordinates.
+- prepare_xml_for_cgview.py: Contains the code to convert .csv file to .xml format.
+- labelsremovedcheck.py: Contains the code which checks for any protein labels being removed by CGView.
  
 ## Requirements
 
@@ -15,21 +15,21 @@ This folder contains the code to generate Figure S4 in the manuscript.
 
 ## Usage
 
-Generate the genome coordinates of the predicted protein components
+Generate the genome coordinates of the predicted protein components.
 
 ```sh
 python3 Map_hits_to_gff.py Example_T9SS_Gliding_motility_hits.csv Example.gff
 ```
 
-Convert the .csv file (File.csv) to .xml (File.xml) format which will be the input for CGView
+Convert the .csv file (File.csv) to .xml (File.xml) format which will be the input for CGView.
 
 ```sh
 python3 prepare_xml_for_cgview.py File.csv
 ```
 
-Make a copy of the generated .xml file (File.xml) and remove the organism details (File_notitle.xml)
+Make a copy of the generated .xml file (File.xml) and remove the organism details (File_notitle.xml).
 
-Run the CGView tool and generate the circular plots
+Run the CGView tool and generate the circular plots.
 
 ```sh
 java -jar -Xmx1500m CGView/cgview.jar -i File.xml -x 1,20 -s 20x_1 -e T > 20x_1.log 2>&1
