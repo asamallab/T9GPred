@@ -1,0 +1,24 @@
+Download cgview.jar from https://github.com/paulstothard/cgview/tree/master/bin
+
+python3 Map_hits_to_gff.py Example_T9SS_Gliding_motility_hits.csv Example.gff
+
+This command will generate a csv file (File.csv) which contains the genome coordinates of the predicted protein components.
+
+python3 prepare_xml_for_cgview.py File.csv
+
+This command will convert the .csv file to .xml (File.xml) file format supported by cgview tool.
+
+make a copy of the generated .xml file (File.xml) and remove the organism details (File_notitle.xml)
+
+java -jar -Xmx1500m CGView/cgview.jar -i File.xml -x 1,20 -s 20x_1 -e T > 20x_1.log 2>&1
+java -jar -Xmx1500m CGView/cgview.jar -i File_notitle.xml -x 1,20 -s 20x_2 -e T > 20x_2.log 2>&1
+cd 20x_1
+mv png png_org
+cp -pr ../20x_2/png .
+cd png
+rm 1_1.png
+cp ../png_org/1_1.png .
+cd ../../
+python3 labelsremovedcheck.py 20x_1.log
+
+

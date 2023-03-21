@@ -1,0 +1,38 @@
+T9SS components	Hits	E-value	Score
+CHU_0134
+CHU_2981
+FtsX	fig|376686.10.peg.585|Fjoh_0567	4.4e-115	382.3
+GldA	fig|376686.10.peg.1562|Fjoh_1516	3e-126	418.6
+GldB	fig|376686.10.peg.1841|Fjoh_1793	4.7e-100	332.9
+GldD	fig|376686.10.peg.1585|Fjoh_1540	9.9e-76	251.8
+GldF	fig|376686.10.peg.2810|Fjoh_2722	1.2e-108	360.7
+GldG	fig|376686.10.peg.2809|Fjoh_2721	3.2e-226	750.4
+GldH	fig|376686.10.peg.916|Fjoh_0890	4.4e-29	99.4
+GldI	fig|376686.10.peg.2437|Fjoh_2369	1e-75	251.4
+GldJ	fig|376686.10.peg.1602|Fjoh_1557	4.1e-229	759.8
+GldK / PorK	fig|376686.10.peg.1902|Fjoh_1853	3.8e-188	624.0
+GldL / PorL	fig|376686.10.peg.1903|Fjoh_1854	4.2e-69	231.5
+GldM / PorM	fig|376686.10.peg.1904|Fjoh_1855	8.6e-159	527.8
+GldN / PorN	fig|376686.10.peg.1906|Fjoh_1857	5.9e-89	295.9
+GldN / PorN	fig|376686.10.peg.1905|Fjoh_1856	6.7e-88	292.5
+GldO	fig|376686.10.peg.1906|Fjoh_1857	3.2e-124	412.3
+GldO	fig|376686.10.peg.1905|Fjoh_1856	2.6e-122	406.0
+Omp17	fig|376686.10.peg.1736|Fjoh_1689	1.2e-59	199.0
+PorG
+PorQ	fig|376686.10.peg.2845|Fjoh_2755	4.8e-130	431.6
+PorU	fig|376686.10.peg.1601|Fjoh_1556	0	1360.3
+PorV	fig|376686.10.peg.1600|Fjoh_1555	1.1e-100	334.4
+PorZ	fig|376686.10.peg.728|Fjoh_0707	2.9e-257	854.2
+SprA / Sov	fig|376686.10.peg.1699|Fjoh_1653	0	3078.3
+SprC	fig|376686.10.peg.1010|Fjoh_0981	1.2e-134	448.5
+SprD	fig|376686.10.peg.1009|Fjoh_0980	2e-241	801.5
+SprE / PorW	fig|376686.10.peg.1083|Fjoh_1051	1.6e-216	719.4
+SprF / PorP / CHU_0170	fig|376686.10.peg.1691|Fjoh_1646	4.2e-114	378.8
+SprF / PorP / CHU_0170	fig|376686.10.peg.4694|Fjoh_4539	6.4e-114	378.2
+SprF / PorP / CHU_0170	fig|376686.10.peg.4091|Fjoh_3951	1.5e-113	377.0
+SprF / PorP / CHU_0170	fig|376686.10.peg.3598|Fjoh_3477	1.6e-108	360.5
+SprF / PorP / CHU_0170	fig|376686.10.peg.4113|Fjoh_3972	9.9e-107	354.6
+SprF / PorP / CHU_0170	fig|376686.10.peg.2341|Fjoh_2274	1.7e-89	298.0
+SprT / PorT	fig|376686.10.peg.1507|Fjoh_1466	1.3e-81	271.5
+
+# T9SS present, all mandatory components were identified.
