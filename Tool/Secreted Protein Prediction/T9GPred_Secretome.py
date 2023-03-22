@@ -33,9 +33,31 @@ else:
     outfile=outdir+'/'+args.outfile
 
 # input file should have .faa or .fasta extension
-if not(any([input_file.endswith('.faa'), input_file.endswith('.fasta')])):
-    print ('Please input a fasta file with .fasta or .faa extension')
+if not(input_file.endswith('.fasta')):
+    print ('Please input a fasta file with .fasta extension')
     sys.exit()
+
+
+# Checking with experimenetally characterized protein sequences
+expiden = {}
+with open ('combined_102.fasta') as exp:
+    for record in SeqIO.parse(exp,'fasta'):
+        expiden[record.id] = str(record.seq)
+
+
+# Getting the protein identifier from input fasta
+idens = []
+inpiden = {} # created this additional dictionary just to compare in th next for loop
+with open (input_file) as inp:
+    for record in SeqIO.parse(inp,'fasta'):
+        idens.append(record.id)
+        inpiden[record.id] = str(record.seq)
+
+# Check which protein sequence from the input file is already present in the experimental sequence
+expseq= []
+for protein in inpiden.keys():
+    if inpiden[protein] in expiden.values():
+        expseq.append(protein) #expseq contains all the proteins which are experimentally characterized
 
 
 read_config = configparser.ConfigParser()
@@ -54,11 +76,6 @@ tm_tmp = glob.glob('TMHMM_*')
 for i in tm_tmp:
     shutil.rmtree (i)
 
-# Getting the protein identifier from input fasta
-idens = []
-with open (input_file) as inp:
-    for record in SeqIO.parse(inp,'fasta'):
-        idens.append(record.id)
 
 # Checking the output and log file from running the tools
 def check_out_log_file(input_file, outdir):
@@ -122,17 +139,13 @@ print ('Intermediate *.log and *.out files from hmmsearch are deleted: {}\n'.for
 
 
 files = sorted(glob.glob(outdir+'/'+'*.tsv'))
-#print(len(files))
 #print(files)
 dfs = [0]*len(files)
 names = []
 for i in range(len(files)):
     names.append('_'.join(files[i].replace('.tsv','').split('_')[-2:]))
     dfs[i] = pd.read_csv(files[i],sep = '\t')
-#    print(dfs[i].shape)
-#print(names)
 df_merged = reduce(lambda  left,right: pd.merge(left,right,on=['ID'],how='outer'), dfs)
-#print(df_merged.shape)
 df_merged.columns = ['ID']+names
 df_merged['phobius_SP'].replace({'Y':1,'N':0}, inplace=True)
 df1 = pd.DataFrame(df_merged[['ID','signalp_SP','phobius_SP','signalp_TP','phobius_TM','tmhmm_TM']])
@@ -140,27 +153,28 @@ df1 = pd.DataFrame(df_merged[['ID','signalp_SP','phobius_SP','signalp_TP','phobi
 for i in df1.columns[1:]:
     df1[i] = df1[i].fillna(0)
     df1[i] = df1[i].astype('int')
-#print(df1.dtypes)
-#print(df1.head())
-#print(df1.shape)
 
 df1['SP'] = df1['signalp_SP'] + df1['phobius_SP'] >= 1
 
 df1['TM'] = df1['phobius_TM'] + df1['tmhmm_TM'] >= 1
 df2 = pd.DataFrame(df1[(df1['SP'] == True) & (df1['signalp_TP'] == 0) & (df1['TM'] == False)].reset_index(drop = True))
-#print(df2.head())
-#print(df2.shape)
+
+
+
 
 passed_idens = sorted(list(df2['ID']))
 f1 = open(outdir+'/'+'passed_identifiers.fasta','w')
 for record in SeqIO.parse(input_file,'fasta'):
-    for ele in passed_idens:
-        if record.id == ele:
-            if len(record.seq) <= 120:
-                f1.write('>'+record.id+'\n'+str(record.seq)+'\n')
-            else:
-                ctd = str(record.seq[-120:])
-                f1.write('>'+record.id+'\n'+ctd+'\n')
+    if record.id in expseq:
+        continue
+    else: 
+        for ele in passed_idens:
+            if record.id == ele:
+                if len(record.seq) <= 120:
+                    f1.write('>'+record.id+'\n'+str(record.seq)+'\n')
+                else:
+                    ctd = str(record.seq[-120:])
+                    f1.write('>'+record.id+'\n'+ctd+'\n')
 f1.close()
 
 # running the HMMsearch for three CTD types
@@ -178,7 +192,10 @@ for i in MODELS:
 
 fileswithhits=[]
 fout=open(outfile,'w')
-fout.write('CTD Types\tHits\tE-value\tScore\n')
+
+fout.write('Type of evidence\tCTD Types\tHits\tE-value\tScore\n')
+fout.write('Experimental'+'\t'+''+', '.join(expseq)+'\n')
+
 for k in MODELS:
     outfiles=outdir+'/'+filename+'_'+k.replace('.hmm','')+'.out'
     tmp = [i.strip() for i in open(outfiles) if i[0] != '#']
@@ -187,7 +204,7 @@ for k in MODELS:
         for j in tmp:
             tmp2=j.strip().split()
             component = k.replace('.hmm','')
-            tmp3='\t'.join([component,tmp2[0],tmp2[4],tmp2[5]])
+            tmp3='Computational'+'\t'+'\t'.join([component,tmp2[0],tmp2[4],tmp2[5]])
             fout.write(tmp3+'\n')
             ctdmapping[component].append(tmp2[0])
     else:

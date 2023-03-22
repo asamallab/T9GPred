@@ -4,7 +4,7 @@ T9GPred is a computational tool for predicting protein components associated wit
 
 ## Folder Contents
 - T9GPred.py: Contains code for prediction of T9SS and gliding motility in Bacteroidetes.
-- MODELS: Contains 28 HMM profiles generated in this study. 
+- MODELS: Contains the 28 HMM profiles which are generated for the proteins associated with T9SS or gliding motility 
 - CONFIG.ini: Contains the path for HMM profiles and HMMsearch tool.
 - Example.fasta: Contains the proteome of an example Bacteroidetes in fasta format.
 
