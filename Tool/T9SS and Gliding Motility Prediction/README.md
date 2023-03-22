@@ -1,6 +1,7 @@
 # T9GPred
 
 T9GPred is a computational tool for predicting protein components associated with T9SS and gliding motility in Bacteroidetes.
+<img src="T9SS and gliding motility prediction.png">
 
 ## Folder Contents
 - T9GPred.py: Contains code for prediction of T9SS and gliding motility in Bacteroidetes.
