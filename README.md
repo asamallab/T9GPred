@@ -2,8 +2,8 @@
 
 This repository provides the developed computational tool T9GPred and the codes to generate the plots associated with the following manuscript:
 
-Ajaya Kumar Sahoo, R. P. Vivek-Ananth, Nikhil Chivukula, Shri Vishalini Rajaram, Karthikeyan Mohanraj, Devanshi Khare, Celin Acharya and Areejit Samal<sup>*</sup>, <i>T9GPred: A Comprehensive Computational Tool for the Prediction of Type 9 Secretion System, Gliding Motility and the Associated Secreted Proteins </i> (Submitted).
-<sup>*</sup>Corresponding author
+Ajaya Kumar Sahoo, R. P. Vivek-Ananth, Nikhil Chivukula, Shri Vishalini Rajaram, Karthikeyan Mohanraj, Devanshi Khare, Celin Acharya and Areejit Samal*, <i>T9GPred: A Comprehensive Computational Tool for the Prediction of Type 9 Secretion System, Gliding Motility and the Associated Secreted Proteins </i> (Submitted).<br>
+(*Corresponding author)
 
 ## Repository Organization
 - [Tool](./Tool): This folder contains the information on the computational tool developed in this study
