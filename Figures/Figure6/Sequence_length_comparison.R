@@ -65,5 +65,5 @@ bxp + stat_pvalue_manual(
 bxp + stat_pvalue_manual(
   stat.test,  label = "{p.adj.signif}",#"{p.adj}{p.adj.signif}", 
   tip.length = 0, hide.ns = TRUE
-) + labs(color='Gliding Motility',x='Gliding Motility',y='Genome Size (kb)')
+) + labs(color='Gliding motility',x='Gliding motility',y='Genome size (kb)')
 

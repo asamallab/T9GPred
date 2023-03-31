@@ -16,8 +16,8 @@ R packages:
 ## Folder Contents
 
 - Bacteroidetes_402_sequence_length_CTD_statistics.txt: Contains the information on the sequence length and number ratio of the predicted secreted proteins of different CTD types.
-- Sequence_length_comparison.R: Contains the code to plot the sequence length comparison between the gliding and non-gliding Bacteroidetes.
-- CTD_type_comparison.R: Contains the code to plot the distributions of predicted secreted proteins (ratio) for CTD types.
+- Sequence_length_comparison.R: Contains the code to plot the sequence length comparison between the gliding and non-gliding <i>Bacteroidetes</i> strains.
+- Secreted_protein_comparison.R: Contains the code to plot the distributions of predicted secreted proteins (ratio) between gliding and non-gliding <i>Bacteroidetes</i> strains.
 
 ## Usage
 

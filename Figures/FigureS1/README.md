@@ -4,8 +4,8 @@ This folder contains the files and codes to reproduce Figure S1 in the manuscrip
 
 ## Folder Contents
 
-- Protein_component_count_T9SS_gliding_motility.csv: Contains the number of proteins predicted to be associated with T9SS or gliding motility for each of the 402 Bacteroidetes. This is the input file for FigureS1.ipynb
-- FigureS1.ipynb: Generates the distribution of number of proteins associated with T9SS or gliding motility across Bacteroidetes. 
+- Protein_component_count_T9SS_gliding_motility.csv: Contains the number of proteins predicted to be associated with T9SS or gliding motility for each of the 402 <i>Bacteroidetes</i> strains. This is the input file for FigureS1.ipynb
+- FigureS1.ipynb: Generates the distribution of number of proteins associated with T9SS or gliding motility across <i>Bacteroidetes</i> strains. 
 
 ## Requirements
 

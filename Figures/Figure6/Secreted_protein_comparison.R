@@ -8,35 +8,27 @@ library(ggpubr)
 library(rstatix)
 #reading the dataset
 Bacteroidetes_402_sequence_length_CTD_statistics <- read_delim("Bacteroidetes_402_sequence_length_CTD_statistics.txt", 
-                                                                    delim = "\t", escape_double = FALSE, 
-                                                                    trim_ws = TRUE)
+                                                               delim = "\t", escape_double = FALSE, 
+                                                               trim_ws = TRUE)
 
 #Creation of a dataset for boxplot
 
-typeA <- Bacteroidetes_402_sequence_length_CTD_statistics[c('motility','TypeA_CDS')]
-typeB <- Bacteroidetes_402_sequence_length_CTD_statistics[c('motility','TypeB_CDS')]
-alltypes <- Bacteroidetes_402_sequence_length_CTD_statistics[c('motility','CTD_CDS')]
+data_boxplot <- Bacteroidetes_402_sequence_length_CTD_statistics[c('CTD_CDS','motility')]
 
-#Renaming column names to append
+#Renaming columns and values
 
-typeA$CTD_Type <- 'Type A'
-typeA <- plyr::rename(typeA, c('TypeA_CDS' = 'CDS_Ratio'))
-typeB$CTD_Type <- 'Type B'
-typeB <- plyr::rename(typeB, c('TypeB_CDS' = 'CDS_Ratio'))
-alltypes$CTD_Type <- 'All'
-alltypes <- plyr::rename(alltypes, c('CTD_CDS' = 'CDS_Ratio'))
-
-data_boxplot <- rbind(alltypes,typeA,typeB)
 data_boxplot <- plyr::rename(data_boxplot,c('motility'='Gliding_motility'))
+data_boxplot <- plyr::rename(data_boxplot,c('CTD_CDS'='CTD_secreted_protein_ratio'))
 data_boxplot$Gliding_motility[data_boxplot$Gliding_motility == 1] <- 'Present'
 data_boxplot$Gliding_motility[data_boxplot$Gliding_motility == 0] <- 'Absent'
+data_boxplot$Gliding_motility <- factor(data_boxplot$Gliding_motility, levels = c("Absent","Present"))
+
 #---------------------------------------------------------
 
 
 #statistical test (independent t-test)
 stat.test <- data_boxplot %>%
-  group_by(CTD_Type) %>%
-  t_test(CDS_Ratio ~ Gliding_motility) %>%
+  t_test(CTD_secreted_protein_ratio ~ Gliding_motility) %>%
   adjust_pvalue(method = "bonferroni") %>%
   add_significance("p.adj")
 stat.test
@@ -44,13 +36,13 @@ stat.test
 
 # Create a box plot
 bxp <- ggboxplot(
-  data_boxplot, x = "CTD_Type", y = "CDS_Ratio", 
-  color = "Gliding_motility", palette = c("#F16767", "#7DB9B6")
+  data_boxplot, x = "Gliding_motility", y = "CTD_secreted_protein_ratio", 
+  color = "Gliding_motility", palette = c("#F16767","#7DB9B6")
 )
 
 # Add p-values onto the box plots
 stat.test <- stat.test %>%
-  add_xy_position(x = "CTD_Type", dodge = 0.8)
+  add_xy_position(x = "Gliding_motility", dodge = 0.8)
 bxp + stat_pvalue_manual(
   stat.test,  label = "p", tip.length = 0
 )
@@ -73,4 +65,5 @@ bxp + stat_pvalue_manual(
 bxp + stat_pvalue_manual(
   stat.test,  label = "{p.adj.signif}",#"{p.adj}{p.adj.signif}", 
   tip.length = 0, hide.ns = TRUE
-) + labs(color='Gliding Motility',x='CTD Type',y='Secreted Protein (Ratio)')
+) + labs(color='Gliding motility',x='Gliding motility',y='Secreted protein (Ratio)')
+

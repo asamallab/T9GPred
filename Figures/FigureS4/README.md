@@ -2,8 +2,8 @@ This folder contains the code to generate Figure S4 in the manuscript.
 
 ## Folder Contents
 
-- Example_T9SS_Gliding_motility_hits.csv: Contains the predicted protein components associated with T9SS and gliding motility for an example Bacteroidetes.
-- Example.gff: Contains the genome coordinates of all the coding sequences for the example Bacteroidetes.
+- Example_T9SS_Gliding_motility_hits.csv: Contains the predicted protein components associated with T9SS and gliding motility for an example <i>Bacteroidetes</i> strain.
+- Example.gff: Contains the genome coordinates of all the coding sequences for the example <i>Bacteroidetes</i> strain.
 - Map_hits_to_gff.py: Contains the code to map proteins to their genome coordinates.
 - prepare_xml_for_cgview.py: Contains the code to convert .csv file to .xml format.
 - labelsremovedcheck.py: Contains the code which checks for any protein labels being removed by CGView.
