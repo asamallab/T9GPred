@@ -7,18 +7,18 @@ library(readr)
 library(ggpubr)
 library(rstatix)
 #reading the dataset
-Bacteroidetes_402_sequence_length_CTD_statistics <- read_delim("Bacteroidetes_402_sequence_length_CTD_statistics.txt", 
+Bacteroidetes_402_sequence_length_CTD_statistics <- read_delim("Sequence_length_CTD_statistics_402.txt", 
                                                                delim = "\t", escape_double = FALSE, 
                                                                trim_ws = TRUE)
 
 #Creation of a dataset for boxplot
 
-data_boxplot <- Bacteroidetes_402_sequence_length_CTD_statistics[c('CTD_CDS','motility')]
+data_boxplot <- Bacteroidetes_402_sequence_length_CTD_statistics[c('Sequence-length','motility')]
 
 #Renaming columns and values
 
 data_boxplot <- plyr::rename(data_boxplot,c('motility'='Gliding_motility'))
-data_boxplot <- plyr::rename(data_boxplot,c('CTD_CDS'='CTD_secreted_protein_ratio'))
+data_boxplot <- plyr::rename(data_boxplot,c('Sequence-length'='Sequence_length'))
 data_boxplot$Gliding_motility[data_boxplot$Gliding_motility == 1] <- 'Present'
 data_boxplot$Gliding_motility[data_boxplot$Gliding_motility == 0] <- 'Absent'
 data_boxplot$Gliding_motility <- factor(data_boxplot$Gliding_motility, levels = c("Absent","Present"))
@@ -28,7 +28,7 @@ data_boxplot$Gliding_motility <- factor(data_boxplot$Gliding_motility, levels = 
 
 #statistical test (independent t-test)
 stat.test <- data_boxplot %>%
-  t_test(CTD_secreted_protein_ratio ~ Gliding_motility) %>%
+  t_test(Sequence_length ~ Gliding_motility) %>%
   adjust_pvalue(method = "bonferroni") %>%
   add_significance("p.adj")
 stat.test
@@ -36,7 +36,7 @@ stat.test
 
 # Create a box plot
 bxp <- ggboxplot(
-  data_boxplot, x = "Gliding_motility", y = "CTD_secreted_protein_ratio", 
+  data_boxplot, x = "Gliding_motility", y = "Sequence_length", 
   color = "Gliding_motility", palette = c("#F16767","#7DB9B6")
 )
 
@@ -64,6 +64,6 @@ bxp + stat_pvalue_manual(
 # Hide ns (non-significant)
 bxp + stat_pvalue_manual(
   stat.test,  label = "{p.adj.signif}",#"{p.adj}{p.adj.signif}", 
-  tip.length = 0, hide.ns = TRUE
-) + labs(color='Gliding motility',x='Gliding motility',y='Secreted protein (Ratio)')
+  tip.length = 0.01, hide.ns = TRUE
+) + labs(color='Gliding motility',x='Gliding motility',y='Genome size (bp)')
 

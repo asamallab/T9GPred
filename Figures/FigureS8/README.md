@@ -1,4 +1,4 @@
-This folder contains the code to generate Figure S6 in the manuscript.
+This folder contains the code to generate Figure S8 in the manuscript.
 
 ## Folder Contents
 
