@@ -1,4 +1,4 @@
-# Figure 6
+# Figure 6 and Figure S4
 
 This folder contains the R scripts to generate the Figure 6 and Figure S4 in the manuscript.
 
