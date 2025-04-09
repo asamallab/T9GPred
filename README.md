@@ -11,7 +11,7 @@ Ajaya Kumar Sahoo, R. P. Vivek-Ananth, Nikhil Chivukula, Shri Vishalini Rajaram,
 
 ## Software Requirements
 - Python3
-	- pandas
+	- Pandas
 	- NumPy
 	- Matplotlib
 - R
