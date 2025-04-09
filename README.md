@@ -10,7 +10,7 @@ Ajaya Kumar Sahoo, R. P. Vivek-Ananth, Nikhil Chivukula, Shri Vishalini Rajaram,
 - [Figures](./Figures): This folder contains the codes to generate plots in the manuscript
 
 ## Software Requirements
-- python3
+- Python3
 	- pandas
 	- NumPy
 	- Matplotlib
